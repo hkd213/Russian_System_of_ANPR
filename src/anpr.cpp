@@ -114,7 +114,7 @@ void Anpr::saveLicensePlates()
 
 void Anpr::showimage(std::string namewindow, cv::Mat image)
 {
-// 	imshow(namewindow, image);
+ 	imshow(namewindow, image);
 }
 
 void Anpr::showNormalImage(std::string namewindow)
@@ -146,7 +146,7 @@ void Anpr::showLicensePlates()
 
 		++nwnd;
 		
-// 		cv::imshow(wndname, img);
+ 		cv::imshow(wndname, img);
 	}
 }
 
@@ -181,8 +181,8 @@ bool Anpr::findLetters(cv::Mat& src)
     {
         std::cout << "Left: " << leftBound << " Right: " << rightBound << std::endl;
 
-//         cv::imshow("Thresold", srcThreshold);
-//         cv::imshow("Автомобильный номер", src);
+         cv::imshow("Thresold", srcThreshold);
+         cv::imshow("Автомобильный номер", src);
 
         std::cout << "Size width: " << src.size().width << " Height: " << src.size().height << std::endl;
     }
@@ -193,27 +193,27 @@ bool Anpr::findLetters(cv::Mat& src)
     cvtColor(src, srcGray, cv::COLOR_BGR2GRAY);
 
     if(showInfo)
-//         cv::imshow("Шаг 1: Перевод в Ч/Б", srcGray);
+         cv::imshow("Шаг 1: Перевод в Ч/Б", srcGray);
 
     threshold(srcGray, srcGray, 0, 255, CV_THRESH_BINARY  | CV_THRESH_OTSU);
 
     if(showInfo)
-//         cv::imshow("Шаг 2: Бинаризация изображения", srcGray);
+         cv::imshow("Шаг 2: Бинаризация изображения", srcGray);
 
     medianBlur(srcThreshold, srcThreshold, 3);
 
     if(showInfo)
-//         cv::imshow("Шаг 3: Фильтр средних частот", srcGray);
+         cv::imshow("Шаг 3: Фильтр средних частот", srcGray);
 
     cv::blur(srcGray, srcGray, cv::Size(3,3));
 
     if(showInfo)
-//         cv::imshow("Шаг 4: Применения размытия по Гауссу", srcGray);
+         cv::imshow("Шаг 4: Применения размытия по Гауссу", srcGray);
 
     cv::Canny(srcGray, cannyOutput, 100, 300, 3);
 
     if(showInfo)
-//         cv::imshow("Шаг 5: Использование детектора границ Кенни", cannyOutput);
+         cv::imshow("Шаг 5: Использование детектора границ Кенни", cannyOutput);
 
     // Find contours
     cv::findContours(cannyOutput, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
